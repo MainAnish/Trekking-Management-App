@@ -1,0 +1,326 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+Trek Details
+{% endblock %}
+
+{% block breadcrumb %}
+Manage Treks > Trek Details
+{% endblock %}
+
+{% block page_title %}
+Trek Details
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <!-- Trek Information -->
+
+    <div class="col-lg-8">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header bg-info text-white">
+
+                <h4 class="mb-0">
+
+                    <i class="bi bi-map-fill"></i>
+
+                    {{ trek.trek_name }}
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Location</label>
+
+                        <p>{{ trek.location }}</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Difficulty</label>
+
+                        <p>{{ trek.difficulty }}</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Duration</label>
+
+                        <p>{{ trek.duration }} Days</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Available Slots</label>
+
+                        <p>{{ trek.available_slots }}</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Start Date</label>
+
+                        <p>{{ trek.start_date.strftime('%d-%m-%Y') }}</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">End Date</label>
+
+                        <p>{{ trek.end_date.strftime('%d-%m-%Y') }}</p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Status</label>
+
+                        {% if trek.status == "Open" %}
+                            <span class="badge bg-success">{{ trek.status }}</span>
+                        {% elif trek.status == "Closed" %}
+                            <span class="badge bg-danger">{{ trek.status }}</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">{{ trek.status }}</span>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="fw-bold">Assigned Staff</label>
+
+                        <p>
+
+                            {% if trek.staff %}
+
+                                {{ trek.staff.name }}
+
+                            {% else %}
+
+                                <span class="text-muted">
+
+                                    Not Assigned
+
+                                </span>
+
+                            {% endif %}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <label class="fw-bold">
+
+                    Description
+
+                </label>
+
+                <p class="mt-2">
+
+                    {{ trek.description }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Summary Card -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-dark text-white">
+
+                Trek Summary
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+
+                    <strong>Total Bookings:</strong>
+
+                    {{ trek.bookings|length }}
+
+                </p>
+
+                <p>
+
+                    <strong>Remaining Slots:</strong>
+
+                    {{ trek.available_slots }}
+
+                </p>
+
+                <p>
+
+                    <strong>Status:</strong>
+
+                    {{ trek.status }}
+
+                </p>
+
+                <hr>
+
+                <div class="d-grid gap-2">
+
+                    <a href="{{ url_for('admin.edit_trek', id=trek.id) }}"
+                       class="btn btn-warning">
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        Edit Trek
+
+                    </a>
+
+                    <a href="{{ url_for('admin.assign_staff', trek_id=trek.id) }}"
+                       class="btn btn-primary">
+
+                        <i class="bi bi-person-plus-fill"></i>
+
+                        Assign Staff
+
+                    </a>
+
+                    <a href="{{ url_for('admin.manage_treks') }}"
+                       class="btn btn-secondary">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Back
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Participants -->
+
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-success text-white">
+
+        <h5 class="mb-0">
+
+            <i class="bi bi-people-fill"></i>
+
+            Registered Participants
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover table-bordered">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Booking Date</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% if trek.bookings %}
+
+                    {% for booking in trek.bookings %}
+
+                    <tr>
+
+                        <td>{{ booking.user.id }}</td>
+
+                        <td>{{ booking.user.name }}</td>
+
+                        <td>{{ booking.user.email }}</td>
+
+                        <td>{{ booking.user.phone }}</td>
+
+                        <td>{{ booking.booking_date.strftime('%d-%m-%Y') }}</td>
+
+                        <td>
+
+                            <span class="badge bg-primary">
+
+                                {{ booking.status }}
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="6" class="text-center">
+
+                            No Participants Yet
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

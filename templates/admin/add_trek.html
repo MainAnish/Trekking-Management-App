@@ -1,0 +1,257 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+Add Trek
+{% endblock %}
+
+{% block breadcrumb %}
+Manage Treks > Add Trek
+{% endblock %}
+
+{% block page_title %}
+Add New Trek
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white">
+
+        <h4 class="mb-0">
+            <i class="bi bi-plus-circle"></i>
+            Add New Trek
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="row">
+
+                <!-- Trek Name -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Trek Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="trek_name"
+                        class="form-control"
+                        required>
+
+                </div>
+
+                <!-- Location -->
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        class="form-control"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <!-- Difficulty -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Difficulty
+                    </label>
+
+                    <select
+                        name="difficulty"
+                        class="form-select"
+                        required>
+
+                        <option value="">Select</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Difficult">Difficult</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Duration -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Duration (Days)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="duration"
+                        class="form-control"
+                        min="1"
+                        required>
+
+                </div>
+
+                <!-- Slots -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Available Slots
+                    </label>
+
+                    <input
+                        type="number"
+                        name="available_slots"
+                        class="form-control"
+                        min="1"
+                        required>
+
+                </div>
+
+            </div>
+
+            <!-- Description -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Description
+                </label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                    class="form-control"
+                    required></textarea>
+
+            </div>
+
+            <div class="row">
+
+                <!-- Start Date -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="start_date"
+                        class="form-control"
+                        required>
+
+                </div>
+
+                <!-- End Date -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        End Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="end_date"
+                        class="form-control"
+                        required>
+
+                </div>
+
+                <!-- Status -->
+
+                <div class="col-md-4 mb-3">
+
+                    <label class="form-label">
+                        Status
+                    </label>
+
+                    <select
+                        name="status"
+                        class="form-select">
+
+                        <option value="Pending">Pending</option>
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Assign Staff -->
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Assign Staff
+                </label>
+
+                <select
+                    name="staff_id"
+                    class="form-select">
+
+                    <option value="">
+                        Select Staff
+                    </option>
+
+                    {% for staff in staff_members %}
+
+                    <option value="{{ staff.id }}">
+                        {{ staff.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="d-flex justify-content-between">
+
+                <a href="{{ url_for('admin.manage_treks') }}"
+                   class="btn btn-secondary">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back
+
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+
+                    <i class="bi bi-check-circle"></i>
+
+                    Save Trek
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

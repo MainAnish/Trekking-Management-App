@@ -1,0 +1,292 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    background:#f5f6fa;
+    color:#333;
+}
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar{
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
+
+.navbar-brand{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.navbar-nav .nav-link{
+    color:white !important;
+    margin-right:10px;
+    font-weight:500;
+    transition:.3s;
+    border-radius:6px;
+    padding:8px 12px;
+}
+
+.navbar-nav .nav-link:hover{
+    background:#0d6efd;
+    color:white !important;
+}
+
+.navbar-text{
+    font-weight:500;
+}
+
+/* ==========================================
+   PAGE TITLE
+========================================== */
+
+.page-title{
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:25px;
+    color:#212529;
+}
+
+/* ==========================================
+   BREADCRUMB
+========================================== */
+
+.breadcrumb-box{
+    background:white;
+    padding:15px 20px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.breadcrumb{
+    margin:0;
+}
+
+.breadcrumb-item.active{
+    font-weight:600;
+}
+
+/* ==========================================
+   CARDS
+========================================== */
+
+.card{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.card-header{
+    border-radius:15px 15px 0 0 !important;
+    font-weight:600;
+}
+
+/* ==========================================
+   DASHBOARD STAT CARDS
+========================================== */
+
+.dashboard-card{
+    color:white;
+    padding:25px;
+    border-radius:15px;
+}
+
+.dashboard-card h2{
+    font-size:34px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.dashboard-card p{
+    margin:0;
+    font-size:16px;
+}
+
+.blue{
+    background:#0d6efd;
+}
+
+.green{
+    background:#198754;
+}
+
+.orange{
+    background:#fd7e14;
+}
+
+.red{
+    background:#dc3545;
+}
+
+/* ==========================================
+   TABLES
+========================================== */
+
+.table{
+    margin-bottom:0;
+}
+
+.table thead{
+    background:#0d6efd;
+    color:white;
+}
+
+.table th,
+.table td{
+    vertical-align:middle;
+}
+
+.table tbody tr:hover{
+    background:#eef5ff;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn{
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+/* ==========================================
+   FORMS
+========================================== */
+
+.form-control,
+.form-select{
+    border-radius:8px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color:#0d6efd;
+    box-shadow:none;
+}
+
+/* ==========================================
+   SEARCH BAR
+========================================== */
+
+.search-box{
+    max-width:350px;
+    margin-bottom:20px;
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* ==========================================
+   ALERTS
+========================================== */
+
+.alert{
+    border-radius:10px;
+}
+
+/* ==========================================
+   PROFILE CARD
+========================================== */
+
+.profile-card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+    margin-top:60px;
+    padding:20px;
+    text-align:center;
+    color:#777;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+    .page-title{
+        font-size:26px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .navbar-brand{
+        font-size:22px;
+    }
+
+    .navbar-nav{
+        margin-top:10px;
+    }
+
+    .navbar-nav .nav-link{
+        margin-bottom:8px;
+    }
+
+    .page-title{
+        text-align:center;
+        font-size:24px;
+    }
+
+    .breadcrumb-box{
+        padding:12px;
+    }
+
+    .table-responsive{
+        overflow-x:auto;
+    }
+
+    .dashboard-card{
+        text-align:center;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .page-title{
+        font-size:22px;
+    }
+
+    .btn{
+        width:100%;
+        margin-bottom:10px;
+    }
+
+    .dashboard-card h2{
+        font-size:28px;
+    }
+
+}

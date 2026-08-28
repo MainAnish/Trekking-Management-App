@@ -1,0 +1,213 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+Update Trek
+{% endblock %}
+
+{% block breadcrumb %}
+Assigned Treks > Update Trek
+{% endblock %}
+
+{% block page_title %}
+Update Trek
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-10">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-warning text-dark">
+
+                <h4 class="mb-0">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Update Trek Information
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <!-- Trek Name -->
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Trek Name
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="{{ trek.trek_name }}"
+                                readonly>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Location
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="{{ trek.location }}"
+                                readonly>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Difficulty & Duration -->
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Difficulty
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="{{ trek.difficulty }}"
+                                readonly>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Duration
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="{{ trek.duration }} Days"
+                                readonly>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Available Slots -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Available Slots
+                        </label>
+
+                        <input
+                            type="number"
+                            name="available_slots"
+                            class="form-control"
+                            value="{{ trek.available_slots }}"
+                            min="0"
+                            required>
+
+                    </div>
+
+                    <!-- Description -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Description
+                        </label>
+
+                        <textarea
+                            name="description"
+                            rows="5"
+                            class="form-control"
+                            required>{{ trek.description }}</textarea>
+
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Trek Status
+                        </label>
+
+                        <select
+                            name="status"
+                            class="form-select"
+                            required>
+
+                            <option value="Pending"
+                            {% if trek.status=="Pending" %}selected{% endif %}>
+                                Pending
+                            </option>
+
+                            <option value="Open"
+                            {% if trek.status=="Open" %}selected{% endif %}>
+                                Open
+                            </option>
+
+                            <option value="Closed"
+                            {% if trek.status=="Closed" %}selected{% endif %}>
+                                Closed
+                            </option>
+
+                            <option value="Completed"
+                            {% if trek.status=="Completed" %}selected{% endif %}>
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Buttons -->
+
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{{ url_for('staff.assigned_treks') }}"
+                           class="btn btn-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+
+                            Back
+
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-warning">
+
+                            <i class="bi bi-save"></i>
+
+                            Update Trek
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

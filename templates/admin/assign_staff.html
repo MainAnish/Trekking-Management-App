@@ -1,0 +1,182 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}
+Assign Staff
+{% endblock %}
+
+{% block breadcrumb %}
+Manage Treks > Assign Staff
+{% endblock %}
+
+{% block page_title %}
+Assign Staff to Trek
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+
+                <h4 class="mb-0">
+
+                    <i class="bi bi-person-plus-fill"></i>
+
+                    Assign Staff
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <!-- Trek Name -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Trek Name
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            value="{{ trek.trek_name }}"
+                            readonly>
+
+                    </div>
+
+                    <!-- Location -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Location
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            value="{{ trek.location }}"
+                            readonly>
+
+                    </div>
+
+                    <!-- Difficulty -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Difficulty
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            value="{{ trek.difficulty }}"
+                            readonly>
+
+                    </div>
+
+                    <!-- Duration -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Duration
+
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            value="{{ trek.duration }} Days"
+                            readonly>
+
+                    </div>
+
+                    <!-- Current Staff -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Assign Staff
+
+                        </label>
+
+                        <select
+                            name="staff_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+
+                                Select Staff
+
+                            </option>
+
+                            {% for staff in staff_members %}
+
+                            <option
+                                value="{{ staff.id }}"
+                                {% if trek.staff_id==staff.id %}selected{% endif %}>
+
+                                {{ staff.name }}
+                                ({{ staff.email }})
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{{ url_for('admin.manage_treks') }}"
+                           class="btn btn-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+
+                            Back
+
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            <i class="bi bi-check-circle"></i>
+
+                            Assign Staff
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

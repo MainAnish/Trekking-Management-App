@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <div class="form-header">
+        <h2>Login</h2>
+        <p>Trekking Management System</p>
+    </div>
+
+    <form method="POST">
+
+        <div class="input-container">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+            >
+
+        </div>
+
+        <div class="button">
+            <button class="submit" type="submit">
+                LOGIN
+            </button>
+        </div>
+
+    </form>
+
+    <div class="signup">
+        New User?
+        <a href="{{ url_for('auth.register_user') }}">
+            Register
+        </a>
+    </div>
+
+    <div class="signup">
+        Want to Join as Trek Staff?
+        <a href="{{ url_for('auth.register_staff') }}">
+            Staff Registration
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
